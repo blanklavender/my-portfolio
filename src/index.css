@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+/* TT Mussels Font Faces */
+@font-face {
+	font-family: 'TT Mussels';
+	src: url('/fonts/TT Mussels Trial Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TT Mussels';
+	src: url('/fonts/TT Mussels Trial Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TT Mussels';
+	src: url('/fonts/TT Mussels Trial DemiBold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TT Mussels';
+	src: url('/fonts/TT Mussels Trial Medium Italic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'TT Mussels';
+	src: url('/fonts/TT Mussels Trial DemiBold Italic.otf') format('opentype');
+	font-weight: 600;
+	font-style: italic;
+}
+
+/* Dark Theme: very dark matte metallic */
+:root {
+	--matte-900: #0b0b0d;
+	--matte-800: #0f1113;
+	--matte-700: #141518;
+	--matte-600: #1a1c20;
+	--accent-silver: #bfc6cb;
+	--accent-silver-bright: #d4dde4;
+	--accent-metal: linear-gradient(135deg,#141517 0%,#222427 60%);
+	--border-silver: rgba(191, 198, 203, 0.2);
+	--shadow-dark: rgba(0, 0, 0, 0.8);
+	--text-primary: #d9dee3;
+	--text-secondary: #a8b0b8;
+	--card-bg: linear-gradient(180deg, rgba(20, 21, 24, 0.95) 0%, rgba(10, 11, 13, 0.98) 100%);
+}
+
+/* Light Theme: inspired by thinkingmachines.ai */
+:root.light {
+	--matte-900: #fafafa;
+	--matte-800: #f5f5f5;
+	--matte-700: #ececec;
+	--matte-600: #e0e0e0;
+	--accent-silver: #2d2d2d;
+	--accent-silver-bright: #1a1a1a;
+	--accent-metal: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 60%);
+	--border-silver: rgba(45, 45, 45, 0.15);
+	--shadow-dark: rgba(0, 0, 0, 0.1);
+	--text-primary: #1a1a1a;
+	--text-secondary: #4a4a4a;
+	--card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 248, 0.98) 100%);
+}
+
+html,body,#root {
+	height: 100%;
+}
+
+body {
+	background: var(--matte-900);
+	color: var(--text-primary);
+	line-height: 1.6;
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hero name styling: uses TT Mussels */
+.hero-name {
+	font-family: 'TT Mussels', serif;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--accent-silver);
+	text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 6px 30px var(--shadow-dark);
+	display: inline-block;
+}
+
+:root.light .hero-name {
+	color: var(--accent-silver);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 4px 20px var(--shadow-dark);
+}
+
+/* levitation */
+@keyframes levitate {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-8px); }
+	100% { transform: translateY(0); }
+}
+.name-levitate {
+	animation: levitate 4.5s ease-in-out infinite;
+	position: relative;
+	display: inline-block;
+}
+
+/* silver shine effect */
+@keyframes shine {
+	0% { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+	10% { opacity: 0.0 }
+	50% { transform: translateX(120%) skewX(-20deg); opacity: 0.85; }
+	100% { transform: translateX(320%) skewX(-20deg); opacity: 0; }
+}
+.name-levitate::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -10%;
+	width: 40%;
+	height: 100%;
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+	transform: translateX(-120%) skewX(-20deg);
+	pointer-events: none;
+	mix-blend-mode: overlay;
+	animation: shine 2.6s ease-in-out infinite;
+}
+
+/* metallic cards with matte finish */
+.metallic-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-silver);
+	box-shadow: 0 8px 32px var(--shadow-dark);
+	backdrop-filter: blur(8px);
+	transition: all 0.3s ease;
+}
+
+.metallic-card:hover {
+	box-shadow: 0 12px 48px var(--shadow-dark);
+	border-color: var(--border-silver);
+	transform: translateY(-2px);
+}
+
+.time-top-right {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	font-size: 0.875rem;
+	color: var(--accent-silver);
+	opacity: 0.9;
+}
+
+.gpa-line {
+	color: var(--accent-silver);
+	font-weight: 600;
+	margin-top: 0.5rem;
+}
+
+/* make links metallic accent */
+.metal-link {
+	color: #cbd5df;
+}
+
+/* footer */
+.site-footer {
+	border-top: 1px solid var(--border-silver);
+	padding: 2rem 0;
+	text-align: center;
+	color: var(--text-secondary);
+}
+
+/* small helpers for icons */
+.icon-btn svg { display: block; }
+
+/* Navbar mirror translucent matte finish */
+.navbar-mirror-matte {
+	background: rgba(11, 11, 13, 0.7);
+	backdrop-filter: blur(20px) saturate(180%);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	box-shadow: 
+		0 8px 32px rgba(0, 0, 0, 0.3),
+		0 0 0 1px rgba(191, 198, 203, 0.08),
+		0 4px 16px rgba(191, 198, 203, 0.12),
+		0 -2px 8px rgba(191, 198, 203, 0.06);
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+:root.light .navbar-mirror-matte {
+	background: rgba(250, 250, 250, 0.7);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero image shadow drop */
+.hero-image-container {
+	position: relative;
+}
+
+.hero-image-shadow {
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 70%;
+	height: 30px;
+	filter: blur(15px);
+	border-radius: 50%;
+	z-index: -1;
+	background: radial-gradient(ellipse, rgba(191, 198, 203, 0.4) 0%, transparent 70%);
+}
+
+:root.light .hero-image-shadow {
+	background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+}
+
+/* Hero image circle shadow */
+.hero-image-circle {
+	box-shadow: 0 20px 60px rgba(191, 198, 203, 0.15);
+}
+
+:root.light .hero-image-circle {
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Elegant link styling */
+.elegant-link {
+	color: var(--accent-silver);
+	text-decoration: none;
+	font-size: 0.9rem;
+	letter-spacing: 0.5px;
+	position: relative;
+	transition: color 0.3s ease;
+	padding-right: 1.5rem;
+}
+
+.elegant-link::after {
+	content: '→';
+	position: absolute;
+	right: 0;
+	opacity: 0;
+	transform: translateX(-5px);
+	transition: all 0.3s ease;
+}
+
+.elegant-link:hover {
+	color: var(--accent-silver-bright);
+}
+
+.elegant-link:hover::after {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+:root.light .elegant-link {
+	color: var(--accent-silver);
+}
+
+:root.light .elegant-link:hover {
+	color: var(--accent-silver-bright);
+}
+
