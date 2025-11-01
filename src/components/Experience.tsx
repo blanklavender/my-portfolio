@@ -47,34 +47,62 @@ const Experience = () => {
     },
   ];
 
+  // normalize link to always have https://
+  const hrefOf = (url: string) =>
+    `https://${url.replace(/^https?:\/\//, '')}`;
+
   return (
     <section id="experience" className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style={{color: 'var(--text-primary)'}}>Experience</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style={{ color: 'var(--text-primary)' }}>
+          Experience
+        </h2>
+
         <div className="space-y-8 sm:space-y-12">
           {experiences.map((exp, index) => (
             <div key={index} className="metallic-card p-4 sm:p-6 rounded-lg">
-              {/* Stack on mobile, row on tablet+ */}
+              {/* Header row */}
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2">
-                <h3 className="text-lg sm:text-xl font-semibold" style={{color: 'var(--text-primary)'}}>{exp.title}</h3>
-                <p className="text-sm sm:text-base md:text-right" style={{color: 'var(--text-secondary)'}}>{exp.date}</p>
-              </div>
-              <div className="mt-2">
-                <p className="text-sm sm:text-base" style={{color: 'var(--text-primary)'}}>
-                  {exp.company}
-                  {exp.link && (
-                    <span className="ml-2">
-                      (<a href={`https://${exp.link}`} className="elegant-link" target="_blank" rel="noopener noreferrer">
-                        {exp.link}
-                      </a>)
-                    </span>
-                  )}
+                <h3 className="text-lg sm:text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>
+                  {exp.title}
+                </h3>
+                <p className="text-sm sm:text-base md:text-right" style={{ color: 'var(--text-secondary)' }}>
+                  {exp.date}
                 </p>
-                <p className="text-sm sm:text-base mt-1" style={{color: 'var(--text-secondary)'}}>{exp.location}</p>
               </div>
+
+              {/* Company, link on its own line, location */}
+              <div className="mt-2">
+                <p className="text-sm sm:text-base" style={{ color: 'var(--text-primary)' }}>
+                  {exp.company}
+                </p>
+
+                {exp.link && (
+                  <p className="text-sm sm:text-base mt-1 break-words" style={{ color: 'var(--text-secondary)' }}>
+                    <a
+                      href={hrefOf(exp.link)}
+                      className="elegant-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {exp.link}
+                    </a>
+                  </p>
+                )}
+
+                <p className="text-sm sm:text-base mt-1" style={{ color: 'var(--text-secondary)' }}>
+                  {exp.location}
+                </p>
+              </div>
+
+              {/* Bullets */}
               <ul className="mt-4 space-y-2">
                 {exp.points.map((point, idx) => (
-                  <li key={idx} className="text-sm sm:text-base pl-4 relative before:content-['•'] before:absolute before:left-0" style={{color: 'var(--text-secondary)'}}>
+                  <li
+                    key={idx}
+                    className="text-sm sm:text-base pl-4 relative before:content-['•'] before:absolute before:left-0"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
                     {point}
                   </li>
                 ))}

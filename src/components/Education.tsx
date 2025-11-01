@@ -34,16 +34,16 @@ const Education = () => {
               {/* Desktop: Date and GPA in top-right, Mobile: Stack at top */}
               <div className="absolute top-3 right-3 text-right hidden md:block">
                 <div style={{color: 'var(--accent-silver)', fontSize: '0.875rem', opacity: 0.9}}>{edu.date}</div>
-                <div className="mt-1 text-base font-bold" style={{color: 'var(--accent-silver)', opacity: 0.9}}>GPA: {edu.gpa}</div>
+                <div className="mt-1 text-base font-bold" style={{color: 'var(--accent-silver)', opacity: 0.9}}>GPA: {edu.gpa} / 4.0</div>
               </div>
               {/* Mobile: Stack date and GPA at top */}
               <div className="mb-3 md:hidden">
                 <div className="text-sm mb-1" style={{color: 'var(--accent-silver)', opacity: 0.9}}>{edu.date}</div>
-                <div className="text-base font-bold" style={{color: 'var(--accent-silver)', opacity: 0.9}}>GPA: {edu.gpa}</div>
               </div>
               <h3 className="text-lg sm:text-xl font-semibold md:pr-32" style={{color: 'var(--text-primary)'}}>{edu.school}</h3>
               <p className="mt-1 text-sm sm:text-base" style={{color: 'var(--text-secondary)'}}>{edu.location}</p>
               <p className="mt-2 text-sm sm:text-base" style={{color: 'var(--text-primary)'}}>{edu.degree}</p>
+              <div className="text-base font-bold pt-2" style={{color: 'var(--accent-silver)', opacity: 0.9}}>GPA: {edu.gpa} / 4.0</div>
             </div>
           ))}
         </div>
