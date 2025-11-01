@@ -16,6 +16,9 @@ const Hero = () => {
             <p className="mt-4 text-base sm:text-lg max-w-xl" style={{color: 'var(--text-secondary)'}}>
               Full Stack Developer | Computer Vision Researcher
             </p>
+            <p className="mt-3 text-sm sm:text-base max-w-xl italic" style={{color: 'var(--text-secondary)', opacity: 0.8}}>
+              Building intelligent systems that bridge the gap between vision and reality
+            </p>
 
             <div className="mt-6 flex items-center space-x-4">
               <a className="icon-btn hover:opacity-80 transition-all hover:scale-110" href="https://linkedin.com/in/mahima-rudrapati" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{color: 'var(--accent-silver)'}}>

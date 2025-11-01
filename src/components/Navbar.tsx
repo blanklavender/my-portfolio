@@ -54,7 +54,7 @@ const Navbar = () => {
                 item.name === 'Resume' ? (
                   <a 
                     key={item.name} 
-                    href="/resume.pdf" 
+                    href="/mahima_resume.pdf" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="cursor-pointer px-3 py-2 rounded-md text-base font-medium transition-colors"
