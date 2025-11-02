@@ -10,7 +10,7 @@ const Projects = () => {
     {
       title: 'Restaurant Recommendation System using ML Algorithms and Web Scraping',
       description: '(First Author - IEEE Xplore Publication)',
-      url: '#',
+      url: 'https://ieeexplore.ieee.org/document/10919373',
       points: [
         'Led a team of 4 to build a scalable ML-driven recommendation platform with React, PostgreSQL, Flask, and Python.',
         'Designed and deployed RESTful APIs with ERDs/DFDs to perform CRUD operations over 10K+ restaurants and reviews.',
@@ -22,7 +22,7 @@ const Projects = () => {
     {
       title: 'Autonomous Vision System for Space Robotics',
       description: '(Computer Vision)',
-      url: '#',
+      url: 'https://repashrvip.wordpress.com/',
       points: [
         'Built a Python-based visual localization pipeline using AprilTags and RGB-D camera SDKs for an autonomous robot vision system designed to guide precise plant growth in space, reaching under sub-0.2 px reprojection error after calibration.',
         'Processed 3D point clouds using OpenCV, Open3D, and C++, reaching over 95% geometric estimation alignment.',
@@ -32,7 +32,7 @@ const Projects = () => {
     {
       title: 'Data Visualization of Green House Gas Emissions in America',
       description: '(Data Science, UI&UX Design)',
-      url: '#',
+      url: 'https://github.com/blanklavender/IndustryEmissionsDash/tree/main',
       points: [
         'Built an interactive D3.js and React-based data visualization dashboard that analyzed over 500K CO/kg emission records across multiple industrial sectors to identify and compare key emission contributors.',
         'Engineered drill-down visual analytics (hierarchical bubbles, stacked bars, pie charts) to surface insights.',
