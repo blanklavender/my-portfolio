@@ -43,7 +43,9 @@ const Education = () => {
               <h3 className="text-lg sm:text-xl font-semibold md:pr-32" style={{color: 'var(--text-primary)'}}>{edu.school}</h3>
               <p className="mt-1 text-sm sm:text-base" style={{color: 'var(--text-secondary)'}}>{edu.location}</p>
               <p className="mt-2 text-sm sm:text-base" style={{color: 'var(--text-primary)'}}>{edu.degree}</p>
+              <div className="mb-3 md:hidden">
               <div className="text-base font-bold pt-2" style={{color: 'var(--accent-silver)', opacity: 0.9}}>GPA: {edu.gpa} / 4.0</div>
+              </div>
             </div>
           ))}
         </div>
