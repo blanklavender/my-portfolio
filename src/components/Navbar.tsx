@@ -65,7 +65,7 @@ const Navbar = () => {
             ))}
 
             <a
-              href={"https://drive.google.com/file/d/1vYJ0tsaBFvFXtqgT5e75k_Vxoxu7qsQm/view?usp=drive_link"}
+              href={CV_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="nav-link text-base"

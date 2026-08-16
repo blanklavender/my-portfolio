@@ -50,6 +50,12 @@
 	--text-primary: #f0f3f7;
 	--text-secondary: #ccd2da;
 	--card-bg: linear-gradient(180deg, rgba(33, 36, 43, 0.95) 0%, rgba(22, 24, 29, 0.98) 100%);
+	/* Polished silver: bright highlights against the dark page */
+	--metal-name: linear-gradient(
+		90deg,
+		#ccd6e2 0%,
+		#ccd6e280 100%
+	);
 }
 
 /* Light Theme: inspired by thinkingmachines.ai */
@@ -66,6 +72,12 @@
 	--text-primary: #1a1a1a;
 	--text-secondary: #4a4a4a;
 	--card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 248, 0.98) 100%);
+	/* Graphite chrome: dark enough to stay legible on the near-white page */
+	--metal-name: linear-gradient(
+		90deg,
+		#454545 0%,
+		#676767d9 100%
+	);
 }
 
 html,body,#root {
@@ -88,11 +100,42 @@ body {
 	letter-spacing: -0.01em;
 	color: var(--accent-silver-bright);
 	display: inline-block;
+	animation: hero-float 8s ease-in-out infinite;
+	will-change: transform;
+}
+
+@keyframes hero-float {
+	0%,
+	100% {
+		transform: translateY(-4px);
+	}
+
+	50% {
+		transform: translateY(4px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-name {
+		animation: none;
+	}
 }
 
 .name-first {
 	font-family: 'TT Mussels', serif;
 	font-weight: 600;
+	display: inline-block;
+	background-image: var(--metal-name);
+}
+
+/* Fall back to solid text where background-clip: text is unsupported */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+	.name-first {
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+	}
 }
 
 .name-last {
