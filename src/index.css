@@ -53,8 +53,8 @@
 	/* Polished silver: bright highlights against the dark page */
 	--metal-name: linear-gradient(
 		90deg,
-		#ccd6e2 0%,
-		#ccd6e280 100%
+		#dae4f0 0%,
+		#ccd6e2b1 100%
 	);
 }
 
@@ -75,8 +75,8 @@
 	/* Graphite chrome: dark enough to stay legible on the near-white page */
 	--metal-name: linear-gradient(
 		90deg,
-		#454545 0%,
-		#676767d9 100%
+		#424242 0%,
+		#676767f1 100%
 	);
 }
 
