@@ -1,4 +1,4 @@
-import { HRVIP_LAB, PAPER } from '../links';
+import { HRVIP_LAB, HRVIP_MEMBERS, PAPER } from '../links';
 import type { ReactNode } from 'react';
 
 interface TimelineItem {
@@ -29,7 +29,7 @@ const items: TimelineItem[] = [
     body: (
       <>
         Joined the{' '}
-        <a href={HRVIP_LAB} target="_blank" rel="noopener noreferrer" className="text-link">
+        <a href={HRVIP_MEMBERS} target="_blank" rel="noopener noreferrer" className="text-link">
           HRVIP Lab
         </a>{' '}
         as a Graduate Student Researcher
