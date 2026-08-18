@@ -7,12 +7,12 @@ interface TimelineItem {
 }
 
 const items: TimelineItem[] = [
-  { date: 'May 10, 2026', body: 'HackDavis 2026 Winner among 428 participants' },
+  { date: 'May 10, 2026', body: 'Winner, HackDavis 2026, among 428 participants' },
   {
     date: 'Mar 6, 2026',
-    body: 'Top 5 winners in Thesis Lightning Talk in CS department at UC Davis',
+    body: 'Top 5 finalist, Thesis Lightning Talk Competition in UC Davis Computer Science Department',
   },
-  { date: 'May 26, 2025', body: 'Leaders for the Future Fellow Awardee at UC Davis' },
+  { date: 'May 26, 2025', body: 'Leaders for the Future Fellow, UC Davis' },
   {
     date: 'Mar 18, 2025',
     body: (
@@ -20,7 +20,7 @@ const items: TimelineItem[] = [
         <a href={PAPER} target="_blank" rel="noopener noreferrer" className="text-link">
           Paper
         </a>
-        {' — "Restaurant Recommendation System Based on ML Algorithms and Real-Time Web Scraping"'}
+        {' - "Restaurant Recommendation System Based on ML Algorithms and Real-Time Web Scraping"'}
       </>
     ),
   },
@@ -28,7 +28,7 @@ const items: TimelineItem[] = [
     date: 'Jan 31, 2025',
     body: (
       <>
-        Joined{' '}
+        Joined the{' '}
         <a href={HRVIP_LAB} target="_blank" rel="noopener noreferrer" className="text-link">
           HRVIP Lab
         </a>{' '}
@@ -38,16 +38,16 @@ const items: TimelineItem[] = [
   },
   {
     date: 'Nov 14, 2024',
-    body: 'Presented my data visualization and interaction project among the top 5 projects in ECS 272 Information Visualization course at UC Davis',
+    body: 'Top 5 projects, ECS 272 Information Visualization (Fall 2024) - UC Davis',
   },
   {
     date: 'Jul 23, 2024',
-    body: 'Graduated with Rank 24 out of 132 students in Computer Engineering Graduating Class (Top 18%)',
+    body: 'Graduated 24th of 132 in Computer Engineering (Top 18% of my department)',
   },
-  {
-    date: 'Feb 9, 2016',
-    body: 'Level 1 award in Trinity College London Grade 2 Plectrum Guitar and Piano',
-  },
+  // {
+  //   date: 'Feb 9, 2016',
+  //   body: 'Trinity College London Grade 2 certification in Plectrum Guitar and Piano',
+  // },
 ];
 
 const Timeline = () => (

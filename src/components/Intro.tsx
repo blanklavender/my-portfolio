@@ -1,9 +1,9 @@
-import { EMAIL, GITHUB, HRVIP_LAB, LINKEDIN } from '../links';
+import { EMAIL, GITHUB, HRVIP_LAB, LINKEDIN, PAPER, PILOTCREW, REPAS, UC_DAVIS } from '../links';
 
 const interests = [
-  'ML model training and deployment',
-  'Computer vision for robotics; camera; imaging',
-  'Pipeline designing and integration',
+  'Algorithm Design and Integration',
+  '3D Perception for Robotics; Camera; Imaging',
+  'Software Infrastructure and Scalability',
 ];
 
 const Intro = () => (
@@ -34,25 +34,39 @@ const Intro = () => (
 
           <div className="mt-7 space-y-4">
             <p>
-              I am enrolled as a master's student in Computer Science at UC Davis (graduating in
-              December 2026) and currently working as a Computer Vision Scientist in a
-              cross-functional team at{' '}
-              <a href={HRVIP_LAB} target="_blank" rel="noopener noreferrer" className="text-link">
+              I am a Master's candidate in Computer Science at {' '}
+              <a href={UC_DAVIS} target="_blank" rel="noopener noreferrer" className="text-link">
+                University of California, Davis
+              </a>  {' '}
+              (completing my thesis and graduating in December 2026). 
+              I am currently working as a Graduate Student Researcher on a computer vision system for robotic plant health monitoring in space 
+              (under <a href={REPAS} target="_blank" rel="noopener noreferrer" className="text-link">
+                REPAS
+              </a>) 
+              at the UC Davis Center for Space Exploration Research. 
+              [<a href={HRVIP_LAB} target="_blank" rel="noopener noreferrer" className="text-link">
                 HRVIP Lab
-              </a>{' '}
-              on a Space Agriculture project.
+              </a>]
             </p>
             <p>
-              Last summer I worked as a software engineer at an LLM evaluation startup, where I
-              designed, built and hosted their website on AWS. Previously I worked at multiple
-              startups building their platforms from scratch, shipping features under intense
-              pressure and deploying their models through to MVP. Before that I graduated with
-              honors from the University of Mumbai in 2024 with a bachelor's degree in Computer
-              Engineering and Artificial Intelligence.
+              Last summer, I worked as a Software Engineer at {' '}
+              <a href={PILOTCREW} target="_blank" rel="noopener noreferrer" className="text-link">
+                Pilotcrew AI
+              </a>
+              {' '}, an LLM evaluation startup, 
+              where I designed and built the product interface along with backend features to be handled in the cloud. 
+              Before that, I graduated from the University of Mumbai, India, in 2024 with a bachelor's degree in Computer Engineering 
+              and a major in Artificial Intelligence. I also published a {' '}
+              <a href={PAPER} target="_blank" rel="noopener noreferrer" className="text-link">
+                research paper
+              </a>
+              {' '} on recommendation systems in IEEE Xplore in 2025.
             </p>
             <p>
-              I also love teaching — I have been a teaching assistant at UC Davis for four quarters,
-              with consistently good feedback from students.
+              I also love teaching. I have been a teaching assistant at UC Davis for four quarters, teaching computer science, design, and entrepreneurship.
+            </p>
+            <p>
+              I am actively looking for Software Engineering, Machine Learning, and Perception Engineering roles. Happy to connect!
             </p>
           </div>
         </div>
