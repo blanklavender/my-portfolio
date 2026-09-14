@@ -1,4 +1,4 @@
-import { HRVIP_LAB, HRVIP_MEMBERS, PAPER } from '../links';
+import { HRVIP_MEMBERS, PAPER } from '../links';
 import type { ReactNode } from 'react';
 
 interface TimelineItem {

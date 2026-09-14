@@ -1,4 +1,6 @@
 import { EMAIL, GITHUB, HRVIP_LAB, LINKEDIN, PAPER, PILOTCREW, REPAS, UC_DAVIS } from '../links';
+import asciiPortrait from '../assets/ascii-portrait.png';
+import photoPortrait from '../assets/mahima_for_ascii.jpg';
 
 const interests = [
   'Algorithm Design and Integration',
@@ -9,7 +11,7 @@ const interests = [
 const Intro = () => (
   <section className="pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div className="max-w-4xl mx-auto px-4 sm:px-6">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_14rem] gap-12 md:gap-16 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_21.25rem] gap-12 md:gap-16 items-center">
         {/* Left: name, headline, interests, summary */}
         <div className="text-base" style={{ color: 'var(--text-primary)' }}>
           <h1 className="text-3xl sm:text-4xl hero-name">
@@ -71,10 +73,13 @@ const Intro = () => (
           </div>
         </div>
 
-        {/* Right: photo, location, links — centered against the left column */}
+        {/* Right: ASCII portrait, location, links — centered against the left column */}
         <div className="flex flex-col items-center md:justify-self-end w-full">
-          <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full overflow-hidden hero-image-circle">
-            <img src="/me_lol.JPG" alt="Mahima Rudrapati" className="w-full h-full object-cover" />
+          {/* ASCII art on the dark theme; its light glyphs vanish on the light page, so show the
+              photo the ASCII was generated from there. Both fill a fixed-size box so they overlap. */}
+          <div className="hero-portrait">
+            <img src={asciiPortrait} alt="ASCII art portrait of Mahima Rudrapati" className="portrait-ascii" />
+            <img src={photoPortrait} alt="Mahima Rudrapati" className="portrait-photo" />
           </div>
           <p className="mt-4 text-base font-medium" style={{ color: 'var(--text-secondary)' }}>
             United States

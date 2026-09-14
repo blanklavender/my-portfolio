@@ -18,12 +18,12 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const storedTheme = localStorage.getItem('theme');
-    const initialTheme = storedTheme ? storedTheme === 'dark' : prefersDark;
+    // Dark is the default; only an explicit choice of light from a previous
+    // visit overrides it.
+    const initialDark = localStorage.getItem('theme') !== 'light';
 
-    setIsDarkMode(initialTheme);
-    if (!initialTheme) document.documentElement.classList.add('light');
+    setIsDarkMode(initialDark);
+    document.documentElement.classList.toggle('light', !initialDark);
   }, []);
 
   const toggleDarkMode = () => {

@@ -228,6 +228,143 @@ body {
 	}
 }
 
+/* Project cards: vertical, image on top, flat border, no motion */
+.project-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border: 1px solid var(--border-silver);
+	color: var(--text-secondary);
+	text-decoration: none;
+}
+
+.project-card:hover {
+	border-color: var(--accent-silver);
+}
+
+.project-card-body {
+	padding: 0.875rem 1rem 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.project-card-meta {
+	font-size: 0.8125rem;
+	letter-spacing: 0.02em;
+	color: var(--accent-silver);
+	opacity: 0.85;
+}
+
+.project-card-title {
+	font-size: 1.0625rem;
+	font-weight: 400;
+	line-height: 1.35;
+	color: var(--text-primary);
+}
+
+.project-card-summary {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	flex: 1;
+}
+
+/* Image slots: a fixed 4:3 frame on cards so the grid stays aligned; free height on the project page */
+.project-image {
+	background: var(--matte-800);
+	border-bottom: 1px solid var(--border-silver);
+	overflow: hidden;
+}
+
+.project-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.project-card-image {
+	aspect-ratio: 4 / 3;
+}
+
+/* Domain tags float over the top-left corner of the card image */
+.project-card-media {
+	position: relative;
+}
+
+.project-card-overlay {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	right: 0.5rem;
+}
+
+.project-card-overlay .tag {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.project-page-image {
+	border: 1px solid var(--border-silver);
+}
+
+.project-page-image img {
+	height: auto;
+}
+
+/* Embedded YouTube players */
+.video-frame {
+	aspect-ratio: 16 / 9;
+	width: 100%;
+	border: 1px solid var(--border-silver);
+	background: #000;
+}
+
+.video-frame iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Tags: blue for domains, purple for tech stack */
+:root {
+	--tag-domain-bg: #1e3a8a;
+	--tag-domain-fg: #dbe3ff;
+	--tag-stack-bg: rgba(139, 71, 219, 0.28);
+	--tag-stack-fg: #dcc4ff;
+}
+
+:root.light {
+	--tag-domain-bg: #1e3a8a;
+	--tag-domain-fg: #ffffff;
+	--tag-stack-bg: #ecdcff;
+	--tag-stack-fg: #581c87;
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+}
+
+.tag {
+	font-size: 0.75rem;
+	line-height: 1.2;
+	padding: 0.2rem 0.5rem;
+	border-radius: 3px;
+	white-space: nowrap;
+}
+
+.tag-domain {
+	background: var(--tag-domain-bg);
+	color: var(--tag-domain-fg);
+}
+
+.tag-stack {
+	background: var(--tag-stack-bg);
+	color: var(--tag-stack-fg);
+}
+
 /* Inline sub-section label: same size as body copy, just weighted */
 .subsection-label {
 	font-weight: 400;
@@ -343,13 +480,46 @@ body {
 	background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
 }
 
-/* Hero image circle shadow */
-.hero-image-circle {
-	box-shadow: 0 20px 60px rgba(191, 198, 203, 0.15);
+/* Hero portrait: ASCII art (transparent PNG) on dark, the source photo on light.
+   Fixed pixel box so the two images occupy the same area at every screen size. */
+.hero-portrait {
+	width: 240px;
+	height: 240px;
+	flex-shrink: 0;
 }
 
-:root.light .hero-image-circle {
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+@media (min-width: 768px) {
+	.hero-portrait {
+		width: 340px;
+		height: 340px;
+	}
+}
+
+.hero-portrait img {
+	width: 100%;
+	height: 100%;
+}
+
+.portrait-ascii {
+	display: block;
+	/* The ASCII render (2110x2138) is 1.3% taller than the square photo it came from;
+	   fill the box so every glyph sits over the pixel it was generated from */
+	object-fit: fill;
+	/* The terminal render is fairly muted; lift it so the colours pop */
+	filter: brightness(1.6) saturate(1.5) contrast(1.05);
+}
+
+.portrait-photo {
+	display: none;
+	object-fit: cover;
+}
+
+:root.light .portrait-ascii {
+	display: none;
+}
+
+:root.light .portrait-photo {
+	display: block;
 }
 
 /* Elegant link styling */
