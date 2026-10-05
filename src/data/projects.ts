@@ -21,9 +21,24 @@ export interface ProjectSection {
   points: string[];
 }
 
+export interface Metric {
+  value: string;
+  label: string;
+}
+
 export interface Project {
   slug: string;
+  /** Short lowercase name used in the Work listing. */
+  name: string;
+  /** Which Work section the project is listed under. */
+  kind: 'research' | 'project';
   title: string;
+  /** What I was on the project, shown in the page header. */
+  role?: string;
+  /** Why the project exists; the Context section of the project page. */
+  context?: string;
+  /** Headline numbers for the Results section of the project page. */
+  metrics?: Metric[];
   /** One short line shown on the card and at the top of the project page. */
   intro: string;
   /** Domain tags (blue). */
@@ -51,6 +66,16 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'repas-vision',
+    name: 'space farming vision',
+    kind: 'research',
+    role: 'Graduate Student Researcher, HRVIP Lab',
+    context:
+      'REPAS studies how robots can farm on their own during long-duration missions, as part of NASA space-habitat research at the UC Davis Center for Spaceflight Research. The robot has to find the hydroponic trays, measure each plant and track its growth over days, with no person checking the readings. I work with agriculturists and engineers to build the perception pipeline that does this from RGB-D cameras.',
+    metrics: [
+      { value: '< 2 cm', label: 'canopy height error' },
+      { value: '> 95%', label: 'alignment between 3D captures' },
+      { value: '< 0.2 px', label: 'camera reprojection error' },
+    ],
     title: 'CV Pipeline for Autonomous Space Farming',
     intro: 'Robot vision pipeline that tracks plant growth in a space habitat from RGB-D cameras, built as a Graduate Student Researcher at the HRVIP Lab, UC Davis.',
     domains: ['Research', 'Computer Vision', '3D'],
@@ -91,6 +116,13 @@ export const projects: Project[] = [
   },
   {
     slug: 'realign',
+    name: 'realign',
+    kind: 'project',
+    role: 'Fine-tuning and evaluation',
+    metrics: [
+      { value: '80.1%', label: 'model accuracy' },
+      { value: 'r ≈ 0.02', label: 'alignment vs. correctness' },
+    ],
     hidden: true,
     title: 'ReAlign',
     intro: 'Scores the reasoning quality of a fine-tuned math LLM, not just whether the final answer is right.',
@@ -106,6 +138,15 @@ export const projects: Project[] = [
   },
   {
     slug: 'restaurant-recommendation',
+    name: 'restaurant recommender',
+    kind: 'research',
+    role: 'First author; led a team of 4',
+    context:
+      'Restaurant apps rank places by star ratings that hide what reviewers actually said. The aim was a recommender that reads live reviews, works out what people liked or disliked, weighs reviewers by how reliable they are, and matches that against what the user cares about. The work was published at DABCon 2024 (IEEE Xplore).',
+    metrics: [
+      { value: '75%', label: 'faster scraping than Selenium' },
+      { value: '10K+', label: 'restaurant and review records' },
+    ],
     title: 'Restaurant Recommendation System',
     intro: 'ML-driven restaurant recommendations built on live-scraped reviews; first-author paper in IEEE Xplore.',
     domains: ['Research paper', 'Web app', 'ML', 'Web scraping'],
@@ -123,6 +164,13 @@ export const projects: Project[] = [
   },
   {
     slug: 'skrapnest',
+    name: 'skrapnest',
+    kind: 'project',
+    role: 'Web development intern',
+    metrics: [
+      { value: '$5K', label: 'seed funding raised' },
+      { value: '20+', label: 'scrap dealers connected' },
+    ],
     title: 'Skrapnest',
     intro: 'Full-stack MVP for a scrap-collection marketplace that went on to raise $5K in seed funding.',
     domains: ['Internship', 'Startup', 'Web app', 'Supply chain'],
@@ -137,6 +185,9 @@ export const projects: Project[] = [
   },
   {
     slug: 'pitchslapped',
+    name: 'pitchslapped',
+    kind: 'project',
+    role: 'Hackathon build',
     title: 'PitchSlapped',
     intro: 'A virtual Shark Tank: pitch out loud to three AI judges and get a scored report card.',
     domains: ['Hackathon', 'Voice AI', 'Web app'],
@@ -156,6 +207,9 @@ export const projects: Project[] = [
   },
   {
     slug: 'baymax',
+    name: 'baymax',
+    kind: 'project',
+    role: 'Frontend and integration, with Sakshi Singh',
     title: 'Baymax — AI Nurse Triage Assistant',
     intro: 'Interactive triage assistant that turns a patient\'s symptom description into follow-up questions and an Emergency Severity Index level, built with Sakshi Singh at HackDavis 2025.',
     domains: ['Hackathon', 'LLM', 'Health'],
@@ -172,6 +226,13 @@ export const projects: Project[] = [
   },
   {
     slug: 'industry-emissions-dashboard',
+    name: 'emissions dashboard',
+    kind: 'project',
+    role: 'Course project, ECS 272',
+    metrics: [
+      { value: '500K+', label: 'emission records' },
+      { value: 'Top 5', label: 'projects in the class' },
+    ],
     title: 'Industry Emissions Dashboard',
     intro: 'Interactive D3.js dashboard that tells the story of 500K+ industrial CO₂ emission records; top 5 project in ECS 272 at UC Davis.',
     domains: ['Data visualization', 'Climate'],
@@ -187,6 +248,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'book-genre-lstm',
+    name: 'book genres',
+    kind: 'project',
     hidden: true,
     title: 'Book Genre Prediction with LSTM',
     intro: 'Multi-class genre classifier over book descriptions, rebuilt in PyTorch with a stronger training setup.',
@@ -202,6 +265,9 @@ export const projects: Project[] = [
   },
   {
     slug: 'human-speed-detector',
+    name: 'speed detector',
+    kind: 'project',
+    role: 'Solo build',
     title: 'Human Speed Detector',
     intro: 'Desktop app that tracks a person in video and plots their speed live.',
     domains: ['Computer vision', 'Sports'],
@@ -222,6 +288,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'level-up',
+    name: 'level up',
+    kind: 'project',
     hidden: true,
     title: 'Level Up',
     intro: 'Fitness app prototype from a hackathon, with a React Native UI and a Flask + MongoDB backend.',
@@ -235,6 +303,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'seasons-animation',
+    name: 'seasons',
+    kind: 'project',
     hidden: true,
     title: 'Seasons Animation',
     intro: 'Keyboard-driven graphics demo in C that switches between sunny, rainy and snowy scenes.',

@@ -1,7 +1,19 @@
+import { EMAIL, GITHUB, LINKEDIN } from '../links';
+
 const Footer = () => (
-  <footer className="site-footer">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-sm">
-      © Copyright {new Date().getFullYear()} Mahima Rudrapati. Inspired from <a href={"https://thinkingmachines.ai/"} target="_blank" rel="noopener noreferrer" className="text-link">thinkingmachines.ai</a>
+  <footer className="site-footer wrap section-gap">
+    <div className="site-footer-inner flex flex-col sm:flex-row sm:justify-between gap-2">
+      <p>
+        © {new Date().getFullYear()} Mahima Rudrapati. Inspired by{' '}
+        <a href="https://rsms.me/" target="_blank" rel="noopener noreferrer">
+          rsms.me
+        </a>
+      </p>
+      <p className="flex gap-4">
+        <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={GITHUB} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={`mailto:${EMAIL}`}>Email</a>
+      </p>
     </div>
   </footer>
 );

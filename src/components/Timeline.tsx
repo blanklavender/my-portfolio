@@ -50,20 +50,16 @@ const items: TimelineItem[] = [
   // },
 ];
 
+/** Minimal dated list in a fixed-height box that scrolls on its own. */
 const Timeline = () => (
-  <section className="pb-16">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 className="section-heading">Timeline</h2>
-      <ul className="mt-6 timeline">
-        {items.map((item) => (
-          <li key={item.date} className="timeline-item">
-            <span className="timeline-date">{item.date}</span>
-            <span className="timeline-body">{item.body}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  <ul className="timeline-scroll" tabIndex={0} aria-label="Timeline">
+    {items.map((item) => (
+      <li key={item.date} className="timeline-item">
+        <span className="timeline-date">{item.date}</span>
+        <span>{item.body}</span>
+      </li>
+    ))}
+  </ul>
 );
 
 export default Timeline;

@@ -1,15 +1,22 @@
-import { Outlet } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import Navbar from './Navbar';
 
-const Layout = () => (
-  <div className="min-h-screen flex flex-col">
-    <Navbar />
-    <main className="flex-1 pt-14">
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-);
+const Layout = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export default Layout;

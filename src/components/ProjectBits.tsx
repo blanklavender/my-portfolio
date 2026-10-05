@@ -1,7 +1,7 @@
-export const Tags = ({ items, kind }: { items: string[]; kind: 'domain' | 'stack' }) => (
+export const Tags = ({ items }: { items: string[] }) => (
   <ul className="tag-list">
     {items.map((item) => (
-      <li key={item} className={`tag tag-${kind}`}>
+      <li key={item} className="tag">
         {item}
       </li>
     ))}
