@@ -124,8 +124,9 @@ body {
 }
 
 @media (max-width: 640px) {
+	/* Phones: more room between the stacked menu and the page content */
 	.after-masthead {
-		margin-top: 48px;
+		margin-top: 80px;
 	}
 }
 
@@ -315,8 +316,14 @@ html.fonts-ready .page-title {
 @media (max-width: 640px) {
 	.masthead {
 		--title-top: 120px;
-		--title-gap: 48px;
+		--title-gap: 80px;
 		padding-top: 32px;
+	}
+
+	/* The menu stacks under the title here, so the title takes only the lines it needs
+	   instead of reserving four, and the menu starts right below it */
+	.page-title {
+		height: auto;
 	}
 
 	.menu {
@@ -921,5 +928,25 @@ main:has(.pre-footer) + .site-footer {
 	/* Keep the back-to-top arrow in the panel's corner, not the window's */
 	.back-to-top {
 		right: calc((100vw - 1460px) / 2 + 32px);
+	}
+}
+
+/* Home: the headline block and the quick-link cards share the column under the menu */
+.home-cards {
+	margin-top: 2.5rem;
+}
+
+/* Phones: headline, links and the open-to-roles note go above the intro; the cards stay below it */
+@media (max-width: 640px) {
+	.home-aside {
+		display: contents;
+	}
+
+	.home-summary {
+		order: -1;
+	}
+
+	.home-cards {
+		margin-top: 0;
 	}
 }

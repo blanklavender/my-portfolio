@@ -60,24 +60,27 @@ const Home = () => (
           </p>
         </div>
 
-        <div className="s2 t2">
-          <p className="lead">{headline}</p>
-          <div className="social mt-4">
-            <a href={GITHUB} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <GitHubIcon size={24} />
-            </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <LinkedInIcon size={24} />
-            </a>
-            <a href={`mailto:${EMAIL}`} aria-label="Email">
-              <EmailIcon size={24} />
-            </a>
+        {/* On phones this column comes apart: the headline block moves above the intro, the cards stay below */}
+        <div className="s2 t2 home-aside">
+          <div className="home-summary">
+            <p className="lead">{headline}</p>
+            <div className="social mt-4">
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <GitHubIcon size={24} />
+              </a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <LinkedInIcon size={24} />
+              </a>
+              <a href={`mailto:${EMAIL}`} aria-label="Email">
+                <EmailIcon size={24} />
+              </a>
+            </div>
+            <div className="callout mt-6">
+              Open to full-time roles as {lookingFor.slice(0, -1).join(', ')} or {lookingFor.at(-1)}, from December
+              2026. <Link to="/contact">Get in touch →</Link>
+            </div>
           </div>
-          <div className="callout mt-6">
-            Open to full-time roles as {lookingFor.slice(0, -1).join(', ')} or {lookingFor.at(-1)}, from December
-            2026. <Link to="/contact">Get in touch →</Link>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-2">
+          <div className="home-cards grid grid-cols-2 gap-2">
             <Link to="/work" className="quick-link">
               <small>Research & projects</small>
               Go to work →
