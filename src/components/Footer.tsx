@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { EMAIL, GITHUB, LINKEDIN } from '../links';
 
 const Footer = () => (
@@ -9,10 +10,14 @@ const Footer = () => (
           rsms.me
         </a>
       </p>
-      <p className="flex gap-4">
+      <p className="flex items-baseline gap-4">
         <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href={GITHUB} target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href={`mailto:${EMAIL}`}>Email</a>
+        {/* Already on /more the route doesn't change, so scroll up here too */}
+        <Link to="/more" className="footer-more" onClick={() => window.scrollTo({ top: 0 })}>
+          more
+        </Link>
       </p>
     </div>
   </footer>

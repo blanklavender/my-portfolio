@@ -28,13 +28,13 @@ const sections = [
   { id: 'open-source', label: 'Open source' },
 ];
 
-/** Lowercase title, one-line summary, quiet meta; each opens its case study in a new tab. */
+/** Lowercase title, one-line summary, quiet meta. */
 const Entries = ({ items }: { items: Project[] }) => (
   <ul className="mt-5 split2">
     {items.map((p) => (
       <li key={p.slug}>
-        <Link to={`/work/${p.slug}`} target="_blank" rel="noopener" className="entry">
-          <span className="entry-title">{p.name} ↗</span>
+        <Link to={`/work/${p.slug}`} className="entry">
+          <span className="entry-title">{p.name}</span>
           <span className="entry-body block">{p.intro}</span>
           <span className="entry-meta block">
             {p.period} · {p.domains.join(', ')}
@@ -76,6 +76,18 @@ const Work = () => (
         </aside>
       </div>
     </div>
+
+    {/* Same card style as the home page's quick links, pointing on to the blog */}
+    <section className="wrap pre-footer">
+      <div className="cols">
+        <div className="s2 t2 grid grid-cols-2 gap-2">
+          <Link to="/blogs" className="quick-link">
+            <small>Notes & write-ups</small>
+            Go to blogs →
+          </Link>
+        </div>
+      </div>
+    </section>
   </>
 );
 

@@ -3,7 +3,10 @@ import './App.css'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Work from './pages/Work'
+import Blogs from './pages/Blogs'
+import BlogPage from './pages/BlogPage'
 import Contact from './pages/Contact'
+import More from './pages/More'
 import ProjectPage from './pages/ProjectPage'
 
 // Project pages used to live under /projects; keep old links working.
@@ -20,7 +23,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />
           <Route path="work/:slug" element={<ProjectPage />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="blogs/:slug" element={<BlogPage />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="more" element={<More />} />
           <Route path="projects" element={<Navigate to="/work" replace />} />
           <Route path="projects/:slug" element={<OldProjectRedirect />} />
           <Route path="*" element={<Navigate to="/" replace />} />

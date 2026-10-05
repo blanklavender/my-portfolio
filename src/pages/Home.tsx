@@ -83,8 +83,8 @@ const Home = () => (
               Go to work →
             </Link>
             <a href={CV_URL} target="_blank" rel="noopener noreferrer" className="quick-link">
-              <small>One page, PDF</small>
-              View CV →
+              <small>One page, CV</small>
+              View Resume →
             </a>
           </div>
         </div>

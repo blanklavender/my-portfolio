@@ -235,6 +235,32 @@ body {
 	font-size: 2rem;
 	line-height: 2.5rem;
 	letter-spacing: -0.01em;
+	opacity: 0;
+}
+
+/* The one bit of motion on the site: the page title eases in once the fonts are loaded */
+html.fonts-ready .page-title {
+	animation: title-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes title-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+		filter: blur(4px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html.fonts-ready .page-title {
+		animation: none;
+		opacity: 1;
+	}
 }
 
 /* Breadcrumb sits in the space above the title without moving it */
@@ -288,7 +314,7 @@ body {
 
 @media (max-width: 640px) {
 	.masthead {
-		--title-top: 64px;
+		--title-top: 120px;
 		--title-gap: 48px;
 		padding-top: 32px;
 	}
@@ -686,7 +712,8 @@ body {
 
 .site-footer-inner {
 	border-top: 2px solid var(--text-primary);
-	padding: 1rem 0 3rem;
+	/* Bottom room so the back-to-top arrow never covers the footer links */
+	padding: 1rem 0 6rem;
 }
 
 .site-footer a {
@@ -702,5 +729,197 @@ body {
 @media (max-width: 1024px) {
 	.page-aside {
 		order: -1;
+	}
+}
+
+/* Back-to-top arrow: appears once the page is scrolled, bottom right; quiet and see-through */
+.back-to-top {
+	position: fixed;
+	right: max(24px, env(safe-area-inset-right));
+	bottom: max(24px, env(safe-area-inset-bottom));
+	z-index: 10;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--rule);
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--bg) 55%, transparent);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	color: var(--text-primary);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.back-to-top.is-visible {
+	opacity: 0.7;
+	visibility: visible;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+	opacity: 1;
+	border-color: rgb(var(--fg-rgb));
+	background: rgb(var(--fg-rgb));
+	color: var(--bg);
+}
+
+.back-to-top:focus-visible {
+	outline: 2px solid var(--text-secondary);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.back-to-top {
+		transition: opacity 0.2s, visibility 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
+	}
+}
+
+@media (min-width: 641px) {
+	.back-to-top {
+		right: 32px;
+		bottom: 32px;
+	}
+}
+
+/* Reading progress: a faint orange line along the very top that fills as the page is read */
+.reading-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;
+	height: 3px;
+	background: var(--dot);
+	opacity: 0.5;
+	transform: scaleX(var(--progress, 0));
+	transform-origin: left;
+	pointer-events: none;
+}
+
+/* Blog post text: paragraphs, lists and headings spaced as one column of reading */
+.blog-body > * + * {
+	margin-top: 1.25rem;
+}
+
+/* "more", in the footer and in the menu on its own page: the one cursive word on the site */
+.menu-items a.menu-more,
+.site-footer a.footer-more {
+	font-family: "Dancing Script", cursive;
+	font-weight: 600;
+	letter-spacing: 0;
+}
+
+/* In the menu: white, with a soft dark-purple glow all around */
+.menu-items a.menu-more {
+	font-size: 1.875rem;
+	color: #fff;
+	text-shadow: 0 0 3px rgb(84, 20, 150), 0 0 8px rgb(84, 20, 150), 0 0 16px rgba(84, 20, 150, 0.85);
+}
+
+.menu-items a.menu-more.active,
+.menu-items a.menu-more.active:hover {
+	color: #fff;
+}
+
+.site-footer a.footer-more {
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.site-footer a.footer-more:hover {
+	color: var(--text-primary);
+}
+
+/* The more page: light lavender instead of grey, dark text, everything lowercase */
+html.page-more {
+	--bg: #cfc4e8;
+	--fg-rgb: 0, 0, 0;
+	--text-secondary: #000;
+	--accent: #000;
+	--accent-fg: #cfc4e8;
+	text-transform: lowercase;
+}
+
+/* Photos: two square columns */
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 64px;
+	/* Smaller photos with more room around them; still starts at the title's left edge */
+	max-width: 480px;
+}
+
+.gallery-photo {
+	display: block;
+	aspect-ratio: 1;
+	border-radius: 2px;
+	background-color: var(--surface);
+	background-size: cover;
+	background-position: center;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.gallery-name {
+	display: block;
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+	.gallery {
+		gap: 24px;
+	}
+}
+
+/* A card that sits right on top of the footer: pushed to the bottom of short pages,
+   with the footer pulled up close underneath it */
+main:has(.pre-footer) {
+	display: flex;
+	flex-direction: column;
+}
+
+.pre-footer {
+	margin-top: auto;
+	padding-top: 96px;
+}
+
+main:has(.pre-footer) + .site-footer {
+	margin-top: 32px;
+}
+
+@media (max-width: 640px) {
+	.pre-footer {
+		padding-top: 64px;
+	}
+}
+
+/* Wide screens: the site sits in a 1460px panel on a near-black surround */
+@media (min-width: 1461px) {
+	html,
+	body {
+		background: rgb(17, 17, 17);
+	}
+
+	/* The lavender "more" page gets a lighter grey surround */
+	html.page-more,
+	html.page-more body {
+		background: rgb(51, 51, 51);
+	}
+
+	.frame {
+		max-width: 1460px;
+		margin-inline: auto;
+		background: var(--bg);
+	}
+
+	/* Keep the back-to-top arrow in the panel's corner, not the window's */
+	.back-to-top {
+		right: calc((100vw - 1460px) / 2 + 32px);
 	}
 }
