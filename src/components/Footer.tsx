@@ -9,6 +9,8 @@ const Footer = () => (
         <a href="https://rsms.me/" target="_blank" rel="noopener noreferrer">
           rsms.me
         </a>
+        <br />
+        <span className="dim">Last updated Oct 5, 2026</span>
       </p>
       <p className="flex items-baseline gap-4">
         <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
