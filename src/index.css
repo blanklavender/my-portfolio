@@ -639,6 +639,18 @@ html.fonts-ready .page-title {
 	margin-top: 0.5rem;
 }
 
+.prose-list-ordered {
+	counter-reset: prose-step;
+}
+
+.prose-list-ordered > li {
+	counter-increment: prose-step;
+}
+
+.prose-list-ordered > li::before {
+	content: counter(prose-step) '.';
+}
+
 .figure {
 	border-radius: 2px;
 	overflow: hidden;

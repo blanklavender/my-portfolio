@@ -8,9 +8,10 @@ const Block = ({ block }: { block: BlogBlock }) => {
       return <h2 className="section-heading pt-6">{block.text}</h2>;
     case 'paragraph':
       return <p className="secondary">{block.text}</p>;
-    case 'list':
+    case 'list': {
+      const List = block.ordered ? 'ol' : 'ul';
       return (
-        <ul className="prose-list">
+        <List className={block.ordered ? 'prose-list prose-list-ordered' : 'prose-list'}>
           {block.items.map((item) => (
             <li key={item.text}>
               {item.text}
@@ -23,8 +24,9 @@ const Block = ({ block }: { block: BlogBlock }) => {
               )}
             </li>
           ))}
-        </ul>
+        </List>
       );
+    }
   }
 };
 
